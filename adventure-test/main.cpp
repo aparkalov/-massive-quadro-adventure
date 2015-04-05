@@ -5,10 +5,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-        MapModel model;
-        model.run();
-
-    MainWindow w(model);
+    MainWindow w;
     w.show();
 
 

@@ -3,12 +3,14 @@
 #include "cell/mapmodel.h"
 
 
-MainWindow::MainWindow(MapModel mapmodel, QWidget *parent) :
+MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow),
-    mapmodel(mapmodel)
+    ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    this->mapmodel.run();
+
     int x = this->mapmodel.width;
     int y = this->mapmodel.height;
 
