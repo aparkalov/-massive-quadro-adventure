@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "cell/mapmodel.h"
 
+static const int timeout = 2000;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -9,16 +10,27 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    int x = this->mapmodel.width;
+    int y = this->mapmodel.height;
+
+    model.setRowCount(x);
+    model.setColumnCount(y);
+
+    emit refreshModel();
+
+    //todo: add table din
+
+    connect(&timer, SIGNAL(timeout()), this, SLOT(refreshModel()));
+    timer.start(timeout);
+}
+
+void MainWindow::refreshModel()
+{
     this->mapmodel.run();
 
     int x = this->mapmodel.width;
     int y = this->mapmodel.height;
 
-
-    model.setRowCount(x);
-    model.setColumnCount(y);
-
-    //todo: add table din
     for (int t = 0; t < x; ++t)
     {
         for (int tt = 0; tt < y; ++tt)
@@ -27,6 +39,7 @@ MainWindow::MainWindow(QWidget *parent) :
         }
     }
     ui->tableView->setModel(&model);
+
 }
 
 MainWindow::~MainWindow()
