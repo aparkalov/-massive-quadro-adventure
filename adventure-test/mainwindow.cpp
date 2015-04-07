@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+
 #include "cell/mapmodel.h"
+#include "templates/visitor.h"
 
 static const int timeout = 2000;
 
@@ -20,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //todo: add table din
 
+    connect(&timer, SIGNAL(timeout()), this, SLOT(runVisitor()));
     connect(&timer, SIGNAL(timeout()), this, SLOT(refreshModel()));
     timer.start(timeout);
 }
@@ -39,7 +42,16 @@ void MainWindow::refreshModel()
         }
     }
     ui->tableView->setModel(&model);
+}
 
+void MainWindow::runVisitor()
+{
+    Visitor visitor;
+
+    int x = rand() % this->mapmodel.width;
+    int y = rand() % this->mapmodel.height;
+
+    this->mapmodel.map[x][y].accept(visitor);
 }
 
 MainWindow::~MainWindow()

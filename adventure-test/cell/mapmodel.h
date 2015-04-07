@@ -12,12 +12,14 @@ public:
     ~MapModel();
 
     bool CreateMap(int width, int height);
+
+    QString getStringValue(int width, int height);
+
+    void run();
+
     QVector<QVector<Cell> > map;
     int height;
     int width;
-
-    QString getStringValue(int width, int height);
-    void run();
 };
 
 #endif // MAPMODEL_H

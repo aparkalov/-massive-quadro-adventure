@@ -28,6 +28,7 @@ private:
 
 public slots:
     void refreshModel();
+    void runVisitor();
 };
 
 #endif // MAINWINDOW_H
