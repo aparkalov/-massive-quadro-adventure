@@ -15,10 +15,12 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     cell/mapmodel.cpp \
-    cell/cell.cpp
+    cell/cell.cpp \
+    templates/visitor.cpp
 
 HEADERS  += mainwindow.h \
     cell/mapmodel.h \
-    cell/cell.h
+    cell/cell.h \
+    templates/visitor.h
 
 FORMS    += mainwindow.ui

@@ -4,6 +4,8 @@
 #include <iostream>
 #include <time.h>
 
+#include <templates/visitor.h>
+
 Cell::Cell()
 {
     value = rand() % 255;
@@ -12,6 +14,11 @@ Cell::Cell()
 Cell::~Cell()
 {
 
+}
+
+void Cell::accept(Visitor &visitor)
+{
+    visitor.visit(*this);
 }
 
 void Cell::interact()
