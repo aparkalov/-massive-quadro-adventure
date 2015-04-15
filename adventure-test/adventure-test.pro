@@ -16,11 +16,16 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     cell/mapmodel.cpp \
     cell/cell.cpp \
-    templates/visitor.cpp
+    templates/visitor.cpp \
+    cellbehaviour/cellbehaviour.cpp \
+    patterns/visitor.cpp
 
 HEADERS  += mainwindow.h \
     cell/mapmodel.h \
     cell/cell.h \
-    templates/visitor.h
+    templates/visitor.h \
+    cellbehaviour/cellbehaviour.h \
+    patterns/visitor.h \
+    field.h
 
 FORMS    += mainwindow.ui
