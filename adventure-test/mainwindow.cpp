@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 
 #include "cell/mapmodel.h"
-#include "templates/visitor.h"
+#include "patterns/visitor.h"
 
 static const int timeout = 2000;
 

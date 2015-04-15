@@ -2,6 +2,9 @@
 #define CELL_H
 
 class Visitor;
+class State;
+
+typedef State CellState;
 
 class Cell
 {
@@ -15,8 +18,19 @@ public:
 
     void interact();
 
+    void ChangeWaterLevel(int val);
+    void ChangeStoneLevel(int val);
+    void ChangeDirtLevel (int val);
+    void ChangeLavaLevel (int val);
+
     virtual void accept(Visitor& visitor);
     ~Cell();
+
+private:
+    friend CellState;
+    void ChangeState(CellState*);
+
+    CellState* state;
 };
 
 #endif // CELL_H
