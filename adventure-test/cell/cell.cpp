@@ -10,36 +10,43 @@
 Cell::Cell()
 {
     value = rand() % 255;
-    state = new State();
+    state = new State(this);
 }
 
 Cell::~Cell()
 {
-    delete state;
+    //delete state;
 }
 
 //---------------
 //Change matter functions
-void Cell::ChangeDirtLevel(int val)
+void Cell::ChangeMatterLevel(MatterType type, int val)
 {
-    state->ChangeDirt(this, val);
-}
-
-void Cell::ChangeWaterLevel(int val)
-{
-    state->ChangeWater(this, val);
-}
-
-void Cell::ChangeStoneLevel(int val)
-{
-    state->ChangeStone(this, val);
-}
-
-void Cell::ChangeLavaLevel(int val)
-{
-    state->ChangeLava(this, val);
+    state->ChangeMatterLevel(this, type, val);
 }
 //---------------
+
+//---------------
+//Getters
+int Cell::GetDirtLevel() const
+{
+    return state->getDirt();
+}
+
+int Cell::GetLavaLevel() const
+{
+    return state->getLava();
+}
+
+int Cell::GetStoneLevel() const
+{
+    return state->getStone();
+}
+
+int Cell::GetWaterLevel() const
+{
+    return state->getWater();
+}
 
 void Cell::accept(Visitor &visitor)
 {
@@ -48,5 +55,5 @@ void Cell::accept(Visitor &visitor)
 
 void Cell::interact()
 {
-    std::cout << "width = " << width << "height = " << height << "value = " << value << std::endl;
+    //std::cout << "width = " << width << "height = " << height << "value = " << value << std::endl;
 }

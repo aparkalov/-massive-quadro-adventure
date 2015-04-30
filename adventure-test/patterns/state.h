@@ -1,19 +1,18 @@
 #ifndef STATE_H
 #define STATE_H
 
+#include <defines/defines.h>
+
 class Cell;
 
 class State
 {
 public:
-    State();
-    State(int water, int stone, int dirt, int lava);
+    State(Cell* cell);
+    State(Cell* cell, int water, int stone, int dirt, int lava);
     virtual ~State();
 
-    virtual void ChangeWater(Cell*, int);
-    virtual void ChangeStone(Cell*, int);
-    virtual void ChangeDirt(Cell*, int);
-    virtual void ChangeLava(Cell*, int);
+    virtual void ChangeMatterLevel(Cell*, MatterType, int);
 
     int getWater() const;
     int getStone() const;

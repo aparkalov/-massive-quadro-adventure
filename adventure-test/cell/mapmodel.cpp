@@ -1,5 +1,7 @@
 #include "mapmodel.h"
 
+#include <QStringBuilder>
+
 MapModel::MapModel()
 {
     width = 10;
@@ -45,6 +47,11 @@ void MapModel::run()
 
 QString MapModel::getStringValue(int width, int height)
 {
-    int val = map[width][height].value;
-    return QString::number(val);
+    Cell* cell = &map[width][height];
+
+    return QString( "Value " % QString::number(cell->value) % "\n"
+                    "Water " % QString::number(cell->GetWaterLevel()) % "\n"
+                    "Stone " % QString::number(cell->GetStoneLevel()) % "\n"
+                    "Dirt "  % QString::number(cell->GetDirtLevel()) %  "\n"
+                    "Lava "  % QString::number(cell->GetLavaLevel()) %  "\n");
 }

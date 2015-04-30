@@ -11,6 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = adventure-test
 TEMPLATE = app
 
+QMAKE_CXXFLAGS += -std=c++11
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -25,6 +26,7 @@ HEADERS  += mainwindow.h \
     cell/cell.h \
     cellbehaviour/cellbehaviour.h \
     patterns/visitor.h \
-    patterns/state.h
+    patterns/state.h \
+    defines/defines.h
 
 FORMS    += mainwindow.ui

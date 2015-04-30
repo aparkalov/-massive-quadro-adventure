@@ -1,6 +1,8 @@
 #ifndef CELL_H
 #define CELL_H
 
+#include <defines/defines.h>
+
 class Visitor;
 class State;
 
@@ -18,10 +20,12 @@ public:
 
     void interact();
 
-    void ChangeWaterLevel(int val);
-    void ChangeStoneLevel(int val);
-    void ChangeDirtLevel (int val);
-    void ChangeLavaLevel (int val);
+    void ChangeMatterLevel(MatterType, int);
+
+    int GetWaterLevel() const;
+    int GetStoneLevel() const;
+    int GetDirtLevel () const;
+    int GetLavaLevel () const;
 
     virtual void accept(Visitor& visitor);
     ~Cell();

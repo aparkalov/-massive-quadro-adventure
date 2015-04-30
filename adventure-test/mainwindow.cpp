@@ -22,7 +22,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //todo: add table din
 
-    connect(&timer, SIGNAL(timeout()), this, SLOT(runVisitor()));
+    ui->tableView->verticalHeader()->setDefaultSectionSize(100);
+    ui->tableView->horizontalHeader()->setDefaultSectionSize(100);
+
+    //connect(&timer, SIGNAL(timeout()), this, SLOT(runVisitor()));
     connect(&timer, SIGNAL(timeout()), this, SLOT(refreshModel()));
     timer.start(timeout);
 }
